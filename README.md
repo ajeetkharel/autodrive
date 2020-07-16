@@ -15,7 +15,7 @@ This model can:
 ```
 python main.py
 ```
-NOTE: This is a default run type for this model which uses the input video stored in ``` test_videos ``` folder.
+NOTE: This is a default run type for this model which uses the input video stored in [test_videos](https://github.com/ajeetkharel/autodrive/tree/v1.0/test_videos) folder.
 
 #### To test the algorithm on your own video type the following command:
 ```
@@ -45,7 +45,7 @@ NOTE: The output video file's extension must be ``` .mkv```.
 ## Extra features of the model
 You can also make changes inside the code to add more features in the models' output.Like:
 
-* To add labels in the top of every bounding box, pass a argument named ``` labels=True ``` in ```pipeline ``` function of [main.py](https://github.com/ajeetkharel/autodrive/blob/v1.0/main.py)
+* To add labels in the top of every bounding box, pass a argument named ``` labels=True ``` in [pipeline](https://github.com/ajeetkharel/autodrive/blob/v1.0/main.py#L46) function of [main.py](https://github.com/ajeetkharel/autodrive/blob/v1.0/main.py)
   ```
   if not lane_only:
 			self.lane_mask_final = self.object_detector.draw_boxes(self.frame, self.lane_mask_final, labels=True)
