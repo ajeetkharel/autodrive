@@ -1,7 +1,7 @@
 # autodrive
 A python implementation for Advanced Driving Assistant. (Now with GPU Support)
 
-![autodrive output sample](https://github.com/ajeetkharel/autodrive/blob/master/outputs/output_sample.png)
+![autodrive output sample](https://github.com/ajeetkharel/autodrive/blob/v1.0/outputs/output_sample.png)
 
 ## About the model
 This model can:
@@ -45,13 +45,13 @@ NOTE: The output video file's extension must be ``` .mkv```.
 ## Extra features of the model
 You can also make changes inside the code to add more features in the models' output.Like:
 
-* To add labels in the top of every bounding box, pass a argument named ``` labels=True ``` in ```pipeline ``` function of [main.py](https://github.com/ajeetkharel/autodrive/blob/master/main.py)
+* To add labels in the top of every bounding box, pass a argument named ``` labels=True ``` in ```pipeline ``` function of [main.py](https://github.com/ajeetkharel/autodrive/blob/v1.0/main.py)
   ```
   if not lane_only:
 			self.lane_mask_final = self.object_detector.draw_boxes(self.frame, self.lane_mask_final, labels=True)
   ```
  
- * If you only want to mask and detect the lanes and dont want to detect objects, you can make ```lane_only`` argument in [main.py](https://github.com/ajeetkharel/autodrive/blob/master/main.py) to ```True```
+ * If you only want to mask and detect the lanes and dont want to detect objects, you can make ```lane_only`` argument in [main.py](https://github.com/ajeetkharel/autodrive/blob/v1.0/main.py) to ```True```
  
  ```
  if __name__=='__main__':
