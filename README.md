@@ -51,7 +51,7 @@ You can also make changes inside the code to add more features in the models' ou
 			self.lane_mask_final = self.object_detector.draw_boxes(self.frame, self.lane_mask_final, labels=True)
   ```
  
- * If you only want to mask and detect the lanes and dont want to detect objects, you can make ```lane_only`` argument in [main.py](https://github.com/ajeetkharel/autodrive/blob/v1.0/main.py) to ```True```
+ * If you only want to mask and detect the lanes and dont want to detect objects, you can make ```lane_only``` argument in [main.py](https://github.com/ajeetkharel/autodrive/blob/v1.0/main.py) to ```True```
  
  ```
  if __name__=='__main__':
