@@ -1,5 +1,5 @@
 # autodrive
-A python implementation for Advanced Driving Assistant. (Now with GPU Support)
+A python implementation for Advanced Driving Assistant. (Now with GPU Support) [<b>[Watch Demo](https://www.youtube.com/watch?v=rAp2Q2FrCTE)</b>]
 
 ![autodrive output sample](https://github.com/ajeetkharel/autodrive/blob/v1.0/outputs/output_sample.png)
 
