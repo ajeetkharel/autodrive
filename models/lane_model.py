@@ -174,9 +174,7 @@ class Lane():
                 line.fitx = line.current_fit[0]*self.ploty**2 + line.current_fit[1]*self.ploty + line.current_fit[2]
 
                 curv = line.measure_curvature(840, self.ploty)
-                if (curv > 10000) or (curv < 100):
-                    line.fitx = np.mean(np.array(line.prev_fitx), axis=0)
-                else:
+                if not ((curv > 10000) or (curv < 100)):
                     #append to the previous n storate of fits and fitx
                     if len(line.prev_fits) > self.n:
                         line.prev_fits.remove(line.prev_fits[0])
@@ -201,7 +199,7 @@ class Lane():
         #measure curvature of both left and right lanes using the lane_width
         self.offset = self.get_offset(image.shape)
         for line in [self.left_line, self.right_line]:
-            line.curvature = line.measure_curvature(self.lanewidth, self.ploty)
+            line.curvature = line.measure_curvature(840, self.ploty)
 
         img = cv2.cvtColor(np.zeros_like(image, dtype='uint8'), cv2.COLOR_GRAY2BGR)
         lane_mask_image = cv2.fillPoly(img, np.int_([self.pts]), (214, 32, 62)[::-1])
@@ -219,7 +217,7 @@ class Lane():
 
     def get_offset(self, shape):
         car_center = shape[1]//2
-        center_lane = (self.right_line.pts[0][:,0][0]- self.left_line.pts[0][:,0][-1])/2
+        center_lane = self.left_line.pts[0][:,0][-1] + (self.right_line.pts[0][:,0][0]- self.left_line.pts[0][:,0][-1])/2
 
         offset = 3.7/840 * (car_center - center_lane)
         return offset

@@ -7,7 +7,7 @@ import os
 import signal
 import time
 
-from models import Thresholder, Lane, Calibrator
+from models import Thresholder, Lane, Calibrator, SteerAssist
 from helpers import warp, misc
 
 # from applications.yolo import YOLO
@@ -20,6 +20,7 @@ class Pipeline():
 		# self.calibrator.calibrate()
 
 		self.thresholder = Thresholder()
+		self.steer_assist = SteerAssist()
 
 		self.views = views
 
@@ -73,7 +74,8 @@ class Pipeline():
 				start_time = time.time()
 				
 				final_image = self.run_pipeline(frame, lane_only)
-				
+				final_image = self.steer_assist.rotate_wheel(final_image, self.lane.left_line.curvature, self.lane.right_line.curvature, self.lane.offset)
+
 				end_time = time.time()
 				diff = end_time - start_time
 
@@ -144,7 +146,7 @@ class Pipeline():
 		cv2.putText(image,f"Left curvature: {self.lane.left_line.curvature}", (15, 170), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,0), 1)
 		cv2.putText(image,f"Right curvature: {self.lane.right_line.curvature}", (15, 200), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,0), 1)
 		cv2.putText(image,f"Offset: {self.lane.offset}", (15, 230), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,0), 1)
-		# cv2.putText(image,f"Steer angle: {self.steer_assist.angle}", (15, 260), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,0), 1)
+		cv2.putText(image,f"Steer angle: {self.steer_assist.angle}", (15, 260), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,0), 1)
 
 		return image
 
